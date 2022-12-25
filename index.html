@@ -4,13 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Notes</title>
 </head>
 <body class="page">
-    <div class="page__container">
-        <header class="header"></header>
-        <main class="content"></main>
-        <footer class="footer"></footer>
+    <div class="popup-box popup-box_type_add-note">
+      <div class="popup popup_type_add-note">
+        <form action="#" method="POST" name="addNoteForm" class="form form_type_add-note" novalidate>
+          <h3 class="popup__title">Add a New Note</h3>
+          <label for="noteTitle" class="form__label">Title</label>
+          <input name="title" id="noteTitle" type="text" class=" form__input form__input_type_title">
+          <label for="noteDescription" class="form__label">Description</label>
+          <textarea name="description" id="noteDescription" cols="30" rows="10" class="form__input form__input_type_description"></textarea>
+          <p class="popup__info"> * Please, don't add empty lines in the description area.</p>
+          <div class="form__buttons-area">
+            <button type="submit" class="button button_type_submit-add-note">Save</button>
+            <button type="button" class="button button_type_close-add-note button_type_close-popup">Close</button>
+          </div>
+        </form>
+      </div>
     </div>
+    <div class="popup-box popup-box_type_read-note">
+      <div class="popup popup_type_read-note">
+        <button class="button button_type_close_note-popup"></button>
+        <h2 class="popup__note-title"></h2>
+        <p class="popup__note-date"></p>
+        <div class="popup__note-description">
+          <p class="popup__note-text"></p>
+        </div>
+      </div>
+    </div>
+    <div class="page__container">
+        <header class="header">
+          <div class="header__top-content">
+            <h1 class="logo">Docket</h1>
+            <button class="button button_type_add"></button>
+          </div>
+          <div class="header__bottom-content">
+            <div class="account-info">AS</div>
+            <div class="account-info__details">
+                <h3 class="account-info__name">Anastasia Sergeeva</h3>
+                <p class="account-info__email">lirebook@yandex.ru</p>
+                <button class="button button_type_signout">Sign out</button>
+            </div>
+          </div>
+        </header>
+        <main class="content">
+          <div class="content__top-content">
+            <form class="form" action="#" method="POST" name="search" noValidate>
+              <div class="search-bar">
+                  <button class="search-bar__button" type="submit"></button>
+                  <input name="search" id="search" type="search" class="search-bar__input" placeholder="Search"/>
+              </div>
+            </form>
+          </div>
+          <div class="content__bottom-content">
+            <h2 class="content__heading">Notes</h2>
+              <ul class="notes-list"></ul>
+          </div>
+        </main>
+    </div>
+    <script src="./pages/index.js"></script>
 </body>
 </html>

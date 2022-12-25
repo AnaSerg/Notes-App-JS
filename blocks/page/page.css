@@ -1,7 +1,6 @@
 .page {
     max-width: 110vw;
     padding: 0;
-    background-color: #000;
-    font-family: 'Inter', 'Arial', sans-serif;
-    color: #fff;
+    color: #000;
+    background-color: #fff;
 }
