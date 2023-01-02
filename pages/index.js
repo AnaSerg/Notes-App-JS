@@ -14,9 +14,10 @@ const popupReadDescription = document.querySelector('.popup__note-text');
 const popupReadDate = document.querySelector('.popup__note-date');
 const popupReadNoteButton = document.querySelector('.button_type_close_note-popup');
 
-const notea = document.querySelectorAll('.note');
 const notesList = document.querySelector('.notes-list');
 const noteMenu = document.querySelector('.note-settings__menu');
+
+const searchInput = document.querySelector('.search-bar__input');
 
 const notes = JSON.parse(localStorage.getItem('notes') || '[]');
 const months = [
@@ -28,6 +29,17 @@ let isEdited = false, editedId;
 const openPopupAddNote = () => {
   popupAddNote.classList.add('popup_open');
 }
+
+const filterNotes = (e) => {
+  const value = e.target.value.toLowerCase();
+  const filteredNotes = notes.filter(note =>
+    note.title.toLowerCase().includes(value) ||
+    note.description.toLowerCase().includes(value)
+  );
+  renderNotes(filteredNotes);
+}
+
+searchInput.addEventListener('input', filterNotes);
 
 const openPopupReadNote = (title, description, date) => {
     popupReadNote.classList.add('popup_open');
@@ -76,9 +88,9 @@ const createNote = (data, index) => {
   return liTag;
 }
 
-const renderNotes = () => {
+const renderNotes = (arr) => {
   document.querySelectorAll('.note').forEach(note => note.remove());
-  notes.forEach((note, index) => {
+  arr.forEach((note, index) => {
     notesList.insertAdjacentHTML('afterbegin', createNote(note, index));
   });
 }
@@ -102,7 +114,7 @@ const addNewNote = (e) => {
 
   localStorage.setItem('notes', JSON.stringify(notes));
 
-  renderNotes();
+  renderNotes(notes);
   closePopupAddNote();
 }
 
@@ -113,7 +125,7 @@ const showMenu = (elem) => {
 const deleteNote = (noteId) => {
   notes.splice(noteId, 1);
   localStorage.setItem('notes', JSON.stringify(notes));
-  renderNotes();
+  renderNotes(notes);
 }
 
 const editNote = (noteId, title, description) => {
@@ -131,4 +143,4 @@ closePopupButton.addEventListener('click', closePopupAddNote);
 popupReadNoteButton.addEventListener('click', closePopupReadNote);
 addNoteButton.addEventListener('click', addNewNote);
 
-renderNotes();
+renderNotes(notes);
