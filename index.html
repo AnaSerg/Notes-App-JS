@@ -11,15 +11,15 @@
     <div class="popup-box popup-box_type_add-note">
       <div class="popup popup_type_add-note">
         <form action="#" method="POST" name="addNoteForm" class="form form_type_add-note" novalidate>
-          <h3 class="popup__title">Add a New Note</h3>
-          <label for="noteTitle" class="form__label">Title</label>
+          <h3 class="popup__title">Добавить новую заметку</h3>
+          <label for="noteTitle" class="form__label">Название</label>
           <input name="title" id="noteTitle" type="text" class=" form__input form__input_type_title">
-          <label for="noteDescription" class="form__label">Description</label>
+          <label for="noteDescription" class="form__label">Описание</label>
           <textarea name="description" id="noteDescription" cols="30" rows="10" class="form__input form__input_type_description"></textarea>
-          <p class="popup__info"> * Please, don't add empty lines in the description area.</p>
+          <p class="popup__info"> * Пожалуйста, не добавляйте пустые линии в описании.</p>
           <div class="form__buttons-area">
-            <button type="submit" class="button button_type_submit-add-note">Save</button>
-            <button type="button" class="button button_type_close-add-note button_type_close-popup">Close</button>
+            <button type="submit" class="button button_type_submit-add-note">Сохранить</button>
+            <button type="button" class="button button_type_close-add-note button_type_close-popup">Закрыть</button>
           </div>
         </form>
       </div>
@@ -37,15 +37,15 @@
     <div class="page__container">
         <header class="header">
           <div class="header__top-content">
-            <h1 class="logo">Docket</h1>
+            <h1 class="logo">Notes</h1>
             <button class="button button_type_add"></button>
           </div>
           <div class="header__bottom-content">
             <div class="account-info">AS</div>
             <div class="account-info__details">
-                <h3 class="account-info__name">Anastasia Sergeeva</h3>
+                <h3 class="account-info__name">Анастасия Сергеева</h3>
                 <p class="account-info__email">lirebook@yandex.ru</p>
-                <button class="button button_type_signout">Sign out</button>
+                <a href="./login.html"><button class="button button_type_signout">Выйти</button></a>
             </div>
           </div>
         </header>
@@ -54,13 +54,13 @@
             <form class="form" action="#" method="POST" name="search" noValidate>
               <div class="search-bar">
                   <button class="search-bar__button" type="submit"></button>
-                  <input name="search" id="search" type="search" class="search-bar__input" placeholder="Search"/>
+                  <input name="search" id="search" type="search" class="search-bar__input" placeholder="Найти заметку"/>
               </div>
             </form>
           </div>
           <div class="content__bottom-content">
-            <h2 class="content__heading">Notes</h2>
               <ul class="notes-list"></ul>
+              <h2 class="no-note-info"></h2>
           </div>
         </main>
     </div>

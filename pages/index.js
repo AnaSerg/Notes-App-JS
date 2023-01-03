@@ -1,6 +1,7 @@
 const openPopupButton = document.querySelector('.button_type_add');
 const closePopupButton = document.querySelector('.button_type_close-popup');
 const addNoteButton = document.querySelector('.button_type_submit-add-note');
+const accountButton = document.querySelector('.account-info');
 
 const form = document.querySelector('.form');
 const titleInput = document.querySelector('.form__input_type_title');
@@ -8,6 +9,7 @@ const descriptionInput = document.querySelector('.form__input_type_description')
 
 const popupTitle = document.querySelector('.popup__title');
 const popupAddNote = document.querySelector('.popup-box_type_add-note');
+const popupAccountInfo = document.querySelector('.account-info__details');
 const popupReadNote = document.querySelector('.popup-box_type_read-note');
 const popupReadTitle = document.querySelector('.popup__note-title');
 const popupReadDescription = document.querySelector('.popup__note-text');
@@ -15,14 +17,25 @@ const popupReadDate = document.querySelector('.popup__note-date');
 const popupReadNoteButton = document.querySelector('.button_type_close_note-popup');
 
 const notesList = document.querySelector('.notes-list');
+const noNote = document.querySelector('.no-note-info');
 const noteMenu = document.querySelector('.note-settings__menu');
 
 const searchInput = document.querySelector('.search-bar__input');
 
 const notes = JSON.parse(localStorage.getItem('notes') || '[]');
+
+const checkNotes = () => {
+  if (notes.length === 0) {
+    noNote.textContent = 'Здесь пока нет заметок.';
+  } else {
+    noNote.textContent = '';
+    renderNotes(notes);
+  }
+}
+
 const months = [
-  'January', 'February', 'March', 'April', 'May',
-  'June', 'July', 'August', 'September', 'October', 'November', 'December'
+  'января', 'февраля', 'марта', 'апреля', 'мая',
+  'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
 ]
 let isEdited = false, editedId;
 
@@ -36,7 +49,13 @@ const filterNotes = (e) => {
     note.title.toLowerCase().includes(value) ||
     note.description.toLowerCase().includes(value)
   );
-  renderNotes(filteredNotes);
+  if(filteredNotes.length === 0) {
+    noNote.textContent = 'Ничего не найдено.';
+    renderNotes(filteredNotes);
+  } else {
+    noNote.textContent = '';
+    renderNotes(filteredNotes);
+  }
 }
 
 searchInput.addEventListener('input', filterNotes);
@@ -64,7 +83,7 @@ const findNoteDate = () => {
   let month = months[dateObj.getMonth()];
   let day = dateObj.getDate();
   let year = dateObj.getFullYear();
-  let noteDate = `${month} ${day}, ${year}`;
+  let noteDate = `${day} ${month} ${year}`;
   return noteDate;
 }
 
@@ -114,7 +133,7 @@ const addNewNote = (e) => {
 
   localStorage.setItem('notes', JSON.stringify(notes));
 
-  renderNotes(notes);
+  checkNotes();
   closePopupAddNote();
 }
 
@@ -126,6 +145,7 @@ const deleteNote = (noteId) => {
   notes.splice(noteId, 1);
   localStorage.setItem('notes', JSON.stringify(notes));
   renderNotes(notes);
+  checkNotes();
 }
 
 const editNote = (noteId, title, description) => {
@@ -134,13 +154,17 @@ const editNote = (noteId, title, description) => {
   openPopupAddNote();
   titleInput.value = title;
   descriptionInput.value = description;
-  popupTitle.textContent = 'Edit the Note';
-
+  popupTitle.textContent = 'Редактировать заметку';
 }
 
+const handleAccountInfoPopup = () => {
+  popupAccountInfo.classList.toggle('popup_open');
+}
+
+accountButton.addEventListener('click', handleAccountInfoPopup);
 openPopupButton.addEventListener('click', openPopupAddNote);
 closePopupButton.addEventListener('click', closePopupAddNote);
 popupReadNoteButton.addEventListener('click', closePopupReadNote);
 addNoteButton.addEventListener('click', addNewNote);
 
-renderNotes(notes);
+checkNotes();

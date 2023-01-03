@@ -4,7 +4,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Mulish', sans-serif;
 }
 
 .page__container {
@@ -56,6 +56,9 @@
 .logo {
   font-size: 22px;
   margin: 0;
+  font-weight: 400;
+  font-family: 'Cabin', sans-serif;
+  letter-spacing: .5px;
 }
 
 .button {
@@ -127,6 +130,15 @@
   align-items: center;
   opacity: 0;
   transition: opacity .5s;
+  z-index: 10;
+}
+
+@media screen and (max-width: 600px) {
+  .account-info__details {
+    top: 170px;
+    left:50%;
+    transform:translate(-50%, -50%);
+  }
 }
 
 .account-info__details_open {
@@ -190,20 +202,6 @@
   }
 }
 
-.content__heading {
-  margin: 80px 0 50px;
-  font-size: 36px;
-  letter-spacing: 2px;
-}
-
-@media screen and (max-width: 700px) {
-  .content__heading {
-    font-size: 28px;
-    margin: 30px 0 30px;
-    letter-spacing: .5px;
-  }
-}
-
 .form {
   max-width: 100%;
 }
@@ -250,6 +248,7 @@
   gap: 20px;
   width: 100%;
   padding: 0;
+  margin-top: 100px;
   list-style-type: none;
 }
 
@@ -262,6 +261,7 @@
 @media screen and (max-width: 800px) {
   .notes-list {
     grid-template-columns: 100%;
+    margin-top: 50px;
 
   }
 
@@ -313,6 +313,20 @@
 .note__date {
   font-size: 14px;
   opacity: .7;
+}
+
+.no-note-info {
+  font-size: 24px;
+  opacity: .5;
+  text-align: center;
+  margin: 150px 0 0;
+}
+
+@media screen and (max-width: 600px) {
+  .no-note-info {
+    font-size: 18px;
+    margin: 90px 0 0;
+  }
 }
 
 .note-settings__button {
@@ -390,15 +404,15 @@
 }
 
 .popup__title {
-  margin: 0 0 30px 0;
-  font-size: 24px;
+  margin: 10px 0 30px 0;
+  font-size: 22px;
   text-align: center;
 }
 
 @media screen and (max-width: 700px) {
   .popup__title {
     margin: 0 0 20px 0;
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -415,7 +429,7 @@
 }
 
 .form__label {
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 10px;
   opacity: .7;
 }
@@ -468,16 +482,16 @@
 .button_type_close_note-popup {
   width: 30px;
   height: 30px;
-  background-color: #FFA682;
+  background-color: #000;
   background-image: url('../images/close-button-icon.svg');
-  opacity: .7;
+  opacity: 1;
   position: absolute;
   top: 20px;
   right: 20px;
 }
 
 .button_type_close_note-popup:hover {
-  opacity: 1;
+  opacity: .7;
 }
 
 .popup__note-title {
@@ -498,10 +512,6 @@
 
 .popup__note-text {
   margin: 0;
-}
-
-.hide {
-  display: none;
 }
 
 
