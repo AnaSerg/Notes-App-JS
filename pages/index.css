@@ -125,10 +125,9 @@
   background-color: #fff;
   bottom: 70px;
   left: 10px;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
   transition: opacity .5s;
   z-index: 10;
 }
@@ -139,10 +138,6 @@
     left:50%;
     transform:translate(-50%, -50%);
   }
-}
-
-.account-info__details_open {
-  opacity: 1;
 }
 
 .account-info__name {
@@ -374,7 +369,7 @@
 /* Popup-add-note */
 
 .popup-box {
-  display: flex;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -384,14 +379,11 @@
   justify-content: center;
   align-items: center;
   z-index: 2;
-  visibility: hidden;
-  opacity: 0;
   transition: visibility .4s,opacity .4s ease-out;
 }
 
 .popup_open {
-  visibility: visible;
-  opacity: 1;
+  display: flex;
 }
 
 .popup {

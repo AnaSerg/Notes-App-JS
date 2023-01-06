@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/register.css">
+  <title>Notes</title>
+</head>
+<body class="page">
+  <div class="page__container">
+      <div class="container register-container">
+        <h2 class="register-welcome">Создать новый аккаунт</h2>
+        <div class="register__signin">
+          <p class="register__question">Уже зарегистрированы?</p>
+          <a href="./login.html" class="register__login-link">Войти</a>
+        </div>
+        <form class="form register__form">
+          <input class=" input register__input" id="username" name="username" type="text" placeholder="Имя"/>
+          <input class="input register__input" id="email" name="email" type="email" placeholder="Email"/>
+          <input class=" input register__input" id="password" name="password" type="password" placeholder="Пароль"/>
+          <input class="input register__input" id="confirmPassword" name="confirmPassword" type="password" placeholder="Повторите пароль"/>
+          <button type="submit" class="button register__button">Зарегистрироваться</button>
+          </form>
+      </div>
+  </div>
+  <script src="./pages/index.js"></script>
+</body>
+</html>

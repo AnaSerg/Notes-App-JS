@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="./pages/login.css">
+  <title>Notes</title>
 </head>
-<body>
-  <h1>Здесь будет страница с логином</h1>
+<body class="page">
+  <div class="page__container">
+      <div class="container login-container">
+        <h2 class="login-welcome">Войти</h2>
+        <div class="login__signup">
+          <p class="login__question">Нет аккаунта?</p>
+          <a href="./register.html" class="login__register-link">Зарегистрироваться</a>
+        </div>
+        <form class="form login__form">
+          <input class="input login__input" id="email" name="email" type="email" placeholder="Email"/>
+          <input class=" input login__input" id="password" name="password" type="password" placeholder="Пароль"/>
+          <button type="submit" class="button login__button">Войти</button>
+          </form>
+      </div>
+  </div>
+  <script src="./pages/index.js"></script>
 </body>
 </html>
