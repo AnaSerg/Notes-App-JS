@@ -3,9 +3,11 @@ const closePopupButton = document.querySelector('.button_type_close-popup');
 const addNoteButton = document.querySelector('.button_type_submit-add-note');
 const accountButton = document.querySelector('.account-info');
 
-const form = document.querySelector('.form');
+const formPopup = document.querySelector('.form');
+const formInputs = Array.from(formPopup.querySelectorAll('.form__input'));
 const titleInput = document.querySelector('.form__input_type_title');
 const descriptionInput = document.querySelector('.form__input_type_description');
+const buttonSubmit = document.querySelector('.button_type_submit-add-note');
 
 const popupTitle = document.querySelector('.popup__title');
 const popupAddNote = document.querySelector('.popup-box_type_add-note');
@@ -71,7 +73,7 @@ const closePopupAddNote = () => {
   isEdited = false;
   popupAddNote.classList.remove('popup_open');
   popupTitle.textContent = 'Add a New Note';
-  form.reset();
+  formPopup.reset();
 }
 
 const closePopupReadNote = () => {
@@ -103,6 +105,21 @@ const createNote = (data, index) => {
       </div>
     </div>
   </li> `;
+
+  function escape(string) {
+    let htmlEscapes = {
+        '&': 'Безопасный аналог амперсанд',
+        '<': 'Безопасный аналог <',
+        '>': 'Безопасный аналог >',
+        '"': 'Безопасный аналог "',
+        "'": "Безопасный аналог '"
+    }
+
+    return string.replace(/[&<>"']/g, function(match) {
+        return htmlEscapes[match];
+    });
+  }
+  escape(liTag);
 
   return liTag;
 }
@@ -168,3 +185,49 @@ popupReadNoteButton.addEventListener('click', closePopupReadNote);
 addNoteButton.addEventListener('click', addNewNote);
 
 checkNotes();
+
+// Validation formPopup
+
+const showInputError = (element, formError) => {
+  element.classList.add('form__input_type_error');
+  formError.classList.add('form__input-error_active');
+};
+
+const hideInputError = (element, formError) => {
+  element.classList.remove('form__input_type_error');
+  formError.classList.remove('form__input-error_active');
+};
+
+const isValid = (formInput, formError) => {
+  if (!formInput.validity.valid) {
+    showInputError(formInput, formError);
+  } else {
+    hideInputError(formInput, formError);
+  }
+};
+
+const hasInvalidInput = (formInputs) => {
+  return formInputs.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+};
+
+const toggleButtonState = (formInputs, buttonElement) => {
+  if (hasInvalidInput(formInputs)) {
+    buttonElement.classList.add('form__submit_inactive');
+    buttonElement.setAttribute("disabled", true);
+  } else {
+    buttonElement.classList.remove('form__submit_inactive');
+    buttonElement.removeAttribute("disabled");
+  }
+};
+
+toggleButtonState(formInputs, buttonSubmit);
+
+formInputs.forEach((input) => input.addEventListener('input', () => {
+  const formError = formPopup.querySelector(`.${input.id}-error`);
+  isValid(input, formError);
+  toggleButtonState(formInputs, buttonSubmit);
+}));
+
+

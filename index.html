@@ -13,9 +13,11 @@
         <form action="#" method="POST" name="addNoteForm" class="form form_type_add-note" novalidate>
           <h3 class="popup__title">Добавить новую заметку</h3>
           <label for="noteTitle" class="form__label">Название</label>
-          <input name="title" id="noteTitle" type="text" class=" form__input form__input_type_title">
+          <input name="title" id="noteTitle" type="text" class=" form__input form__input_type_title" required maxlength="20">
+          <span class="noteTitle-error form__input-error">Необходимо придумать название заметки</span>
           <label for="noteDescription" class="form__label">Описание</label>
-          <textarea name="description" id="noteDescription" cols="30" rows="10" class="form__input form__input_type_description"></textarea>
+          <textarea name="description" id="noteDescription" cols="30" rows="10" class="form__input form__input_type_description" required></textarea>
+          <span class="noteDescription-error form__input-error">Необходимо добавить описание заметки</span>
           <p class="popup__info"> * Пожалуйста, не добавляйте пустые линии в описании.</p>
           <div class="form__buttons-area">
             <button type="submit" class="button button_type_submit-add-note">Сохранить</button>
@@ -51,7 +53,7 @@
         </header>
         <main class="content">
           <div class="content__top-content">
-            <form class="form" action="#" method="POST" name="search" noValidate>
+            <form class="form__search" action="#" method="POST" name="search" noValidate>
               <div class="search-bar">
                   <button class="search-bar__button" type="submit"></button>
                   <input name="search" id="search" type="search" class="search-bar__input" placeholder="Найти заметку"/>
@@ -64,6 +66,6 @@
           </div>
         </main>
     </div>
-    <script src="./pages/index.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
