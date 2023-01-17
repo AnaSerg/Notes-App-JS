@@ -1,6 +1,5 @@
 const openPopupButton = document.querySelector('.button_type_add');
 const closePopupButton = document.querySelector('.button_type_close-popup');
-const accountButton = document.querySelector('.account-info');
 
 const formPopup = document.querySelector('.form');
 const formInputs = Array.from(formPopup.querySelectorAll('.form__input'));
@@ -10,7 +9,6 @@ const buttonSubmit = document.querySelector('.button_type_submit-add-note');
 
 const popupTitle = document.querySelector('.popup__title');
 const popupAddNote = document.querySelector('.popup-box_type_add-note');
-const popupAccountInfo = document.querySelector('.account-info__details');
 const popupReadNote = document.querySelector('.popup-box_type_read-note');
 const popupReadTitle = document.querySelector('.popup__note-title');
 const popupReadDescription = document.querySelector('.popup__note-text');
@@ -174,10 +172,6 @@ const editNote = (noteId, title, description) => {
   popupTitle.textContent = 'Редактировать заметку';
 }
 
-const handleAccountInfoPopup = () => {
-  popupAccountInfo.classList.toggle('popup_open');
-}
-
 // Validation formPopup
 
 const showInputError = (element, formError) => {
@@ -232,7 +226,6 @@ const resetValidation = () => {
 
 /* Listeners */
 
-accountButton.addEventListener('click', handleAccountInfoPopup);
 openPopupButton.addEventListener('click', openPopupAddNote);
 closePopupButton.addEventListener('click', closePopupAddNote);
 popupReadNoteButton.addEventListener('click', closePopupReadNote);

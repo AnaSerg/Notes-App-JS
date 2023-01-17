@@ -15,22 +15,18 @@
 /* Header */
 
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   padding: 30px 0;
   height: 100vh;
   border-right: 2px solid #F6F6F6;
 }
 
-.header__top-content {
-  height: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .logo {
   font-size: 22px;
-  margin: 0;
+  margin: 0 0 50px 0;
   font-weight: 400;
   font-family: 'Cabin', sans-serif;
   letter-spacing: .5px;
@@ -58,62 +54,6 @@
 
 .button_type_add:hover {
   transform: rotate(180deg);
-}
-
-.header__bottom-content {
-  height: 80%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  position: relative;
-}
-
-.account-info {
-  border-radius: 50%;
-  border: 2px solid #000;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.account-info:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-.account-info__details {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  position: absolute;
-  width: 250px;
-  height: 200px;
-  background-color: #fff;
-  bottom: 70px;
-  left: 10px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  transition: opacity .5s;
-  z-index: 10;
-}
-
-.account-info__name {
-  margin: 0 0 10px 0;
-}
-
-.account-info__email {
-  margin: 0 0 50px 0;
-  opacity: .8;
-}
-
-.button_type_signout {
-  border-radius: 5px;
-  width: 150px;
-  color: #fff;
 }
 
 /* Content */
@@ -243,7 +183,7 @@
 }
 
 .note-settings__menu {
-  width: 110px;
+  width: 100px;
   height: 30px;
   position: absolute;
   background: #FFA682;
@@ -497,23 +437,9 @@
 
   /* Header */
   .header {
-    height: 170px;
+    height: 180px;
     border: none;
     border-bottom: 2px solid #F6F6F6;
-  }
-
-  .header__top-content {
-    height: 80px;
-  }
-
-  .header__bottom-content {
-    height: 50px;
-  }
-
-  .account-info__details {
-    top: 170px;
-    left:50%;
-    transform:translate(-50%, -50%);
   }
 
   /* Content */
@@ -540,6 +466,10 @@
 /* Max-width 428px */
 
 @media screen and (max-width: 428px) {
+
+  .notes-list {
+    padding-bottom: 30px;
+  }
   /* Note */
   .note {
     min-width: 100%;
@@ -551,5 +481,13 @@
 
   .note__description {
     font-size: 16px;
+  }
+
+  .note-settings__menu {
+    width: 30px;
+    height: 110px;
+    right: 0px;
+    bottom: 50px;
+    flex-direction: column;
   }
 }
