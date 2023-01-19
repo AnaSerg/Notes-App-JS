@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+</head>
+<body class="page">
+    <div class="popup-box popup-box_type_add-note">
+      <div class="popup popup_type_add-note">
+        <form action="#" method="POST" name="addNoteForm" class="form form_type_add-note" novalidate>
+          <h3 class="popup__title">Добавить новую заметку</h3>
+          <label for="noteTitle" class="form__label">Название</label>
+          <input name="title" id="noteTitle" type="text" class=" form__input form__input_type_title" required maxlength="20">
+          <span class="noteTitle-error form__input-error">Необходимо придумать название заметки</span>
+          <label for="noteDescription" class="form__label">Описание</label>
+          <textarea name="description" id="noteDescription" cols="30" rows="10" class="form__input form__input_type_description" required></textarea>
+          <span class="noteDescription-error form__input-error">Необходимо добавить описание заметки</span>
+          <p class="popup__info"> * Пожалуйста, не добавляйте пустые линии в описании.</p>
+          <div class="form__buttons-area">
+            <button type="submit" class="button button_type_submit-add-note">Сохранить</button>
+            <button type="button" class="button button_type_close-add-note button_type_close-popup">Закрыть</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="popup-box popup-box_type_read-note">
+      <div class="popup popup_type_read-note">
+        <button class="button button_type_close_note-popup"></button>
+        <h2 class="popup__note-title"></h2>
+        <p class="popup__note-date"></p>
+        <div class="popup__note-description">
+          <p class="popup__note-text"></p>
+        </div>
+      </div>
+    </div>
+    <div class="page__container">
+        <header class="header">
+            <h1 class="logo">Notes</h1>
+            <button class="button button_type_add"></button>
+        </header>
+        <main class="content">
+          <div class="content__top-content">
+            <form class="form__search" action="#" method="POST" name="search" noValidate>
+              <div class="search-bar">
+                  <button class="search-bar__button" type="submit"></button>
+                  <input name="search" id="search" type="search" class="search-bar__input" placeholder="Найти заметку"/>
+              </div>
+            </form>
+          </div>
+          <div class="content__bottom-content">
+              <ul class="notes-list"></ul>
+              <h2 class="no-note-info"></h2>
+          </div>
+        </main>
+    </div>
+</body>
+</html>
