@@ -89,20 +89,20 @@ const findNoteDate = () => {
 
 const createNote = (data, index) => {
   let liTag = ` <li class="note">
-    <div class="note__details">
-      <h2 class="note__title">${data.title}</h2>
-      <p class="note__description">${data.description}</p>
-    </div>
-    <div class="note__bottom-content">
-      <p class="note__date">${data.date}</p>
-      <button onclick="showMenu(this)" class="button note-settings__button"></button>
-      <div class="note-settings__menu">
-          <button onclick="openPopupReadNote('${data.title}', '${data.description}', '${data.date}')" class="button note-settings-menu__button button_type_read"></button>
-          <button onclick="editNote(${index}, '${data.title}', '${data.description}')" class="button note-settings-menu__button button_type_edit"></button>
-          <button onclick="deleteNote(${index})" class="button note-settings-menu__button button_type_delete"></button>
+      <div class="note__details">
+        <h2 class="note__title">${data.title}</h2>
+        <p class="note__description">${data.description}</p>
       </div>
-    </div>
-  </li> `;
+      <div class="note__bottom-content">
+        <p class="note__date">${data.date}</p>
+        <button onсlick="showMenu(this)" class="button note-settings__button"></button>
+        <div class="note-settings__menu">
+            <button onclick="openPopupReadNote('${data.title}', '${data.description}', '${data.date}')" class="button note-settings-menu__button button_type_read"></button>
+            <button onclick="editNote(${index}, '${data.title}', '${data.description}')" class="button note-settings-menu__button button_type_edit"></button>
+            <button onclick="deleteNote(${index})" class="button note-settings-menu__button button_type_delete"></button>
+        </div>
+      </div>
+    </li> `;
 
   function escape(string) {
     let htmlEscapes = {
@@ -117,6 +117,7 @@ const createNote = (data, index) => {
         return htmlEscapes[match];
     });
   }
+
   escape(liTag);
 
   return liTag;
@@ -202,7 +203,6 @@ const toggleButtonState = (formInputs, buttonElement) => {
   if (hasInvalidInput(formInputs)) {
     buttonElement.classList.add('form__submit_inactive');
     buttonElement.setAttribute("disabled", true);
-    console.log(buttonElement);
   } else {
     buttonElement.classList.remove('form__submit_inactive');
     buttonElement.removeAttribute("disabled");
