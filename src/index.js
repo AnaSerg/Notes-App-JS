@@ -95,7 +95,7 @@ const createNote = (data, index) => {
       </div>
       <div class="note__bottom-content">
         <p class="note__date">${data.date}</p>
-        <button onсlick="showMenu(this)" class="button note-settings__button"></button>
+        <button onclick="showMenu(this)" class="button note-settings__button"></button>
         <div class="note-settings__menu">
             <button onclick="openPopupReadNote('${data.title}', '${data.description}', '${data.date}')" class="button note-settings-menu__button button_type_read"></button>
             <button onclick="editNote(${index}, '${data.title}', '${data.description}')" class="button note-settings-menu__button button_type_edit"></button>
